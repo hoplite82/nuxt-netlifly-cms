@@ -10,15 +10,7 @@
           </span>
           <img v-if="post.cover" class="cover-image" :src="post.cover">
         </template>
-        <template v-else-if="postType === 'posts'">
-          <span class="flex-1">
-            <h6 class="inline-block py-1 px-2 mr-1 bg-gray text-white text-sm font-medium rounded-sm">{{ post.author }}</h6>
-            <h3 class="card-title">{{ post.title }}</h3>
-            <p class="mt-2">{{ post.description }}</p>
-          </span>
-          <img v-if="post.cover" class="cover-image" :src="post.cover">
-        </template>
-        <template v-if="postType === 'blog'">
+        <template v-else>
           <span class="w-full">
             <span class="flex justify-between align-baseline">
               <h3 class="card-title">{{ post.title }}</h3>
@@ -44,11 +36,11 @@
 
 <script>
 export default {
-  name: 'Posts',
+  name: 'PostsPosts',
   props: {
     postType: {
       type: String,
-      default: 'blog',
+      default: 'posts',
       validator: (val) => ['blog', 'projects', 'posts'].includes(val),
     },
     amount: { // ? https://content.nuxtjs.org/fetching#limitn
